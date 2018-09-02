@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {
   MatInputModule,
@@ -19,6 +19,8 @@ import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
    declarations: [
@@ -26,10 +28,13 @@ import { appRoutes } from './routes';
       PostCreateComponent,
       HeaderComponent,
       PostListComponent,
+      LoginComponent,
+      SignupComponent
    ],
    imports: [
       BrowserModule,
       ReactiveFormsModule,
+      FormsModule,
       BrowserAnimationsModule,
       MatInputModule,
       MatCardModule,
