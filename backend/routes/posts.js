@@ -65,7 +65,6 @@ router.put('/:id', multer({storage: storage}).single('image'), (req, res, next) 
 router.get('', (req, res, next) => {
     const pageSize = +req.query.pagesize;
     const currentPage = +req.query.page;
-    console.log(pageSize, currentPage);
     const postQuery = Post.find();
     let fetchedPosts;
     if (pageSize && currentPage) {
