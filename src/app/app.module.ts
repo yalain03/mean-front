@@ -22,6 +22,7 @@ import { appRoutes } from './routes';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
    declarations: [
@@ -47,7 +48,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
       HttpClientModule,
       RouterModule.forRoot(appRoutes),
    ],
-   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, AuthGuard],
    bootstrap: [
       AppComponent
    ]
