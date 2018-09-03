@@ -47,4 +47,10 @@ login(email: string, password: string) {
     });
 }
 
+logout() {
+  this.token = null;
+  this.isAuthenticated = false;
+  this.authStatusListener.next(false);
+}
+
 }
