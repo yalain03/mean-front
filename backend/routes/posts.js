@@ -44,7 +44,12 @@ router.post('', checkAuth, multer({storage: storage}).single('image'), (req, res
                 id: createdPost._id
             }
         });
-    })    
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Error during post creation!'
+        });
+    });
 });
 
 router.put('/:id', checkAuth, multer({storage: storage}).single('image'), (req, res, next) => {
@@ -65,6 +70,11 @@ router.put('/:id', checkAuth, multer({storage: storage}).single('image'), (req, 
             res.status(200).json({message: 'Updated successfully!'});
         else
             res.status(400).json({message: 'Unauthorized'});
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: "Couldn't update post!"
+        });
     });
 });
 
@@ -89,6 +99,11 @@ router.get('', (req, res, next) => {
                 posts: fetchedPosts,
                 maxPosts: count
             });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Error during posts retrieval!'
+            });
         });
 });
 
@@ -99,6 +114,11 @@ router.get('/:id', (req, res, next) => {
         } else {
             res.status(400).json({message: 'Post not found!'});
         }
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Post not found!'
+        });
     });
 });
 
@@ -108,6 +128,11 @@ router.delete('/:id', checkAuth, (req, res, next) => {
             res.status(200).json({message: 'Post deleted!'});
         else
             res.status(401).json({message: 'Unauthorized'});
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Error during post deletion!'
+        });
     });
 });
 
